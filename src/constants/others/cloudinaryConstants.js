@@ -1,0 +1,5 @@
+module.exports = {
+  CLOUDINARY_NAME: "dugqgiswp",
+  CLOUDINARY_API_KEY: "212356733941438",
+  CLOUDINARY_API_SECRET: "92JQ6SsyfDbCPrdjhL2wjJs3ToY",
+};
