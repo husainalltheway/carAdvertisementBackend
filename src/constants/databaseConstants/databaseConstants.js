@@ -1,6 +1,5 @@
-module.exports = {
-    /* -------------->> DATABSE COLLECTION NAMES <<-------------- */
-    CLIENT_DETAILS: 'clientDetails',
-    CAR_DETAILS: 'carDetails',
-    ADVERTISEMENT_DETAILS: 'addDetails' 
-}
+/* -------------->> DATABSE COLLECTION NAMES <<-------------- */
+
+export const CLIENT_DETAILS = 'clientDetails'
+export const CAR_DETAILS = 'carDetails'
+export const ADVERTISEMENT_DETAILS = 'addDetails'

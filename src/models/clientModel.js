@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import mongoose, {Schema} from "mongoose";
-import { CLIENT_DETAILS, ADVERTISEMENT_DETAILS } from "../constants/databaseConstants/databaseConstants";
-import { ACCESS_TOKEN_EXPIRY, ACCESS_TOKEN_SECRET, REFERESH_TOKEN_EXPIRY, REFERESH_TOKEN_SECRET } from "../constants/databaseConstants/tokenConstants";
+import { CLIENT_DETAILS, ADVERTISEMENT_DETAILS } from "../constants/databaseConstants/databaseConstants.js";
+import { ACCESS_TOKEN_EXPIRY, ACCESS_TOKEN_SECRET, REFERESH_TOKEN_EXPIRY, REFERESH_TOKEN_SECRET } from "../constants/databaseConstants/tokenConstants.js";
 
 const clientSchema = new Schema(
     {
@@ -54,7 +54,7 @@ const clientSchema = new Schema(
 clientSchema.pre("save", async function (next) {
     if(!this.isModified("password")) return next();
 
-    this.password = bcrypt.hash(this.password, 10)
+    this.password = await bcrypt.hash(this.password, 10)
     next()
 })
 
