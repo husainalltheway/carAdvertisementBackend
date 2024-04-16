@@ -9,14 +9,13 @@ const registerUser = asyncHandler(async (req, res, next) => {
   if ([name, userName, email, phoneNumber, location, password].some((field) => field?.trim() === "")) {
     throw new ApiError(400, "All fields are required");
   }
-  const existedUser = Client.findOne({
+  const existedUser = await Client.findOne({
     $or: [{ email }, { userName }],
   });
   if (existedUser) {
-    console.log('existedUser: ', existedUser);
     throw new ApiError(409, "USER ALREADY EXIST");
   }
-  const user = await Client.create({
+  const newUser = await Client.create({
     clientName: name.toLowerCase(),
     clientUserNAme: userName.toLowerCase(),
     email: email,
@@ -24,7 +23,7 @@ const registerUser = asyncHandler(async (req, res, next) => {
     location: location.toLowerCase(),
     password: password,
   });
-  const createdUser = Client.findById(user._id).select(
+  const createdUser = await Client.findById(newUser._id).select(
     "-password -refreshToken"
   )
   if(!createdUser) {
