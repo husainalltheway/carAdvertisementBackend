@@ -1,5 +1,5 @@
 import mongoose, {Schema} from "mongoose";
-import { ADVERTISEMENT_DETAILS, CLIENT_DETAILS } from "../constants/databaseConstants/databaseConstants";
+import { ADVERTISEMENT_DETAILS, CLIENT_DETAILS } from "../constants/databaseConstants/databaseConstants.js";
 import mongooseAggregatePaginate  from "mongoose-aggregate-paginate-v2"; 
 
 const addSchema = new Schema(
@@ -8,16 +8,22 @@ const addSchema = new Schema(
             type: String,
             required: true
         },
+        assetId: {
+            type: String,
+            required: true
+        },
+        publicId: {
+            type: String,
+            required: true
+        },
         clientID: {
             type: Schema.Types.ObjectId,
             ref: CLIENT_DETAILS
         },
-        city: [
-            {
-                type: String,
-                required: true
-            }
-        ],
+        city: {
+            type: String,
+            required: true
+        },
         state: {
             type: String
         },
