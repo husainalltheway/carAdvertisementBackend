@@ -62,7 +62,7 @@ clientSchema.methods.isPasswordCorrect = async function  (password) {
 }
 
 clientSchema.methods.generateAccessToken = async function () {
-    jwt.sign(
+    return jwt.sign(
         {
             _id: this._id,
             email: this.email,
@@ -77,7 +77,7 @@ clientSchema.methods.generateAccessToken = async function () {
 }
 
 clientSchema.methods.generateRefereshToken = async function () {
-    jwt.sign(
+    return jwt.sign(
         {
             _id: this._id,
         },
