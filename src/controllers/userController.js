@@ -60,13 +60,6 @@ const registerUser = asyncHandler(async (req, res, next) => {
 
 // API to get User logged in
 const loginUser = asyncHandler(async (req, res) => {
-  // req body -> data
-  // user name or email
-  // find the user
-  // password check
-  // access and refresh token
-  // send cookies
-
   const { email, password } = req.body;
   if (!email) {
     throw new ApiError(400, "email is required");
