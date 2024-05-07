@@ -3,6 +3,7 @@ import { ApiError } from "../utils/ApiErrors.js";
 import { Client } from "../models/clientModel.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 
+// Funtion to generate access and refresh token 
 const generateAccessAndRefreshTokens = async (userId) => {
   try {
     const user = await Client.findById(userId);
@@ -21,6 +22,7 @@ const generateAccessAndRefreshTokens = async (userId) => {
   }
 };
 
+// API to register user
 const registerUser = asyncHandler(async (req, res, next) => {
   const { name, userName, email, phoneNumber, location, password } = req.body;
 
@@ -56,6 +58,7 @@ const registerUser = asyncHandler(async (req, res, next) => {
     .json(new ApiResponse(200, createdUser, "USER CREATED !!"));
 });
 
+// API to get User logged in
 const loginUser = asyncHandler(async (req, res) => {
   // req body -> data
   // user name or email
@@ -112,6 +115,7 @@ const loginUser = asyncHandler(async (req, res) => {
     );
 });
 
+// API to get user logged out
 const logoutUser = asyncHandler(async(req, res) => {
   await Client.findByIdAndUpdate(
     req.user._id,
