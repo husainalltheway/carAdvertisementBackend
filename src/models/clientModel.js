@@ -2,7 +2,6 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import mongoose, {Schema} from "mongoose";
 import { CLIENT_DETAILS, ADVERTISEMENT_DETAILS } from "../constants/databaseConstants/databaseConstants.js";
-import { ACCESS_TOKEN_EXPIRY, ACCESS_TOKEN_SECRET, REFERESH_TOKEN_EXPIRY, REFERESH_TOKEN_SECRET } from "../constants/databaseConstants/tokenConstants.js";
 
 const clientSchema = new Schema(
     {
@@ -70,9 +69,9 @@ clientSchema.methods.generateAccessToken = async function () {
             clientName: this.clientName,
             clientUserNAme: this.clientUserNAme
         },
-        ACCESS_TOKEN_SECRET,
+        process.env.ACCESS_TOKEN_SECRET,
         {
-            expiresIn: ACCESS_TOKEN_EXPIRY
+            expiresIn: process.env.ACCESS_TOKEN_EXPIRY
         }
     )
 }
@@ -82,9 +81,9 @@ clientSchema.methods.generateRefereshToken = async function () {
         {
             _id: this._id,
         },
-        REFERESH_TOKEN_SECRET,
+        process.env.REFRESH_TOKEN_SECRET,
         {
-            expiresIn: REFERESH_TOKEN_EXPIRY
+            expiresIn: process.env.REFRESH_TOKEN_EXPIRY
         }
     )
 }
