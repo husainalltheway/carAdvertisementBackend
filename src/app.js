@@ -1,6 +1,12 @@
 import express from "express"
 import cors from "cors"
 import cookieParser from "cookie-parser"
+import swaggerJSDoc from "swagger-jsdoc"
+import swaggerUI from "swagger-ui-express"
+import { options }  from "../swagger/swaggerDetails.js"
+
+
+const carAddSwaggerSpec = swaggerJSDoc(options)
 
 const app = express()
 app.use(cors({
@@ -8,6 +14,7 @@ app.use(cors({
     credentials: true
 }))
 
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(carAddSwaggerSpec))
 app.use(express.json({limit: "16kb"}))
 app.use(express.urlencoded({extended: true, limit: "16kb"}))
 app.use(express.static("public"))
