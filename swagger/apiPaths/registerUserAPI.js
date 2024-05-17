@@ -4,7 +4,7 @@ import { ApiError } from "../../src/utils/ApiErrors.js";
 export const registerAPI = {
   "/users/register": {
     post: {
-      tags: ["Register"],
+      tags: ["USER"],
       summary: "User Register",
       description: "API to register user for the first time",
       requestBody: {
@@ -40,7 +40,7 @@ export const registerAPI = {
             },
           },
         },
-        ApiError,
+        ApiError
       },
     },
   },

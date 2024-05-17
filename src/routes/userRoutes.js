@@ -7,8 +7,8 @@ import { verifyJWT } from "../middlewares/authentication.js";
 const router = Router()
 
 router.route("/register").post(registerUser)
-router.route("/uploadAdvertisementFile").post(upload.fields([{name: 'advertisementFile', maxCount: 1}]),uploadAdvertisementFile)
 router.route("/login").post(loginUser)
+router.route("/uploadAdvertisementFile").post(upload.fields([{name: 'advertisementFile', maxCount: 1}]),uploadAdvertisementFile)
 
 
 // secured routes

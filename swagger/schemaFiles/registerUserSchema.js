@@ -22,7 +22,7 @@ const registerSchema = {
     email: {
         type: "string",
         description: "Your email address",
-        example: "example@gmail.com"
+        example: "leo@gmail.com"
     },
     phoneNumber: {
         type: "string",
